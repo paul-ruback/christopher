@@ -401,6 +401,310 @@
     <section id="calendar">
       <h2>🗓️ Generate Smart Calendar</h2>
       <div class="tip">Auto-blocks your prep time, based on cognitive flow & task weight.</div>
+
+    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes fadeOut {
+      0%, 40% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    @keyframes fadeIn {
+      0%, 40% { opacity: 0; }
+      50%, 100% { opacity: 1; }
+    }
+    
+    @keyframes highlightReading {
+      0%, 10% { opacity: 0; }
+      15%, 40% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    @keyframes highlightAssignment {
+      0%, 15% { opacity: 0; }
+      20%, 40% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    @keyframes highlightExam {
+      0%, 25% { opacity: 0; }
+      30%, 40% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    @keyframes fadeInCalEvent1 {
+      0%, 60% { opacity: 0; }
+      65%, 100% { opacity: 1; }
+    }
+    
+    @keyframes fadeInCalEvent2 {
+      0%, 70% { opacity: 0; }
+      75%, 100% { opacity: 1; }
+    }
+    
+    @keyframes fadeInCalEvent3 {
+      0%, 80% { opacity: 0; }
+      85%, 100% { opacity: 1; }
+    }
+    
+    @keyframes scanLine {
+      0% { transform: translateY(0); opacity: 0; }
+      5% { opacity: 0.8; }
+      40% { transform: translateY(400px); opacity: 0.8; }
+      45%, 100% { opacity: 0; }
+    }
+    
+    .syllabus {
+      animation: fadeOut 10s ease-in-out infinite;
+    }
+    
+    .calendar {
+      animation: fadeIn 10s ease-in-out infinite;
+    }
+    
+    .reading-highlight {
+      animation: highlightReading 10s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    .assignment-highlight {
+      animation: highlightAssignment 10s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    .exam-highlight {
+      animation: highlightExam 10s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    .cal-event-1 {
+      animation: fadeInCalEvent1 10s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    .cal-event-2 {
+      animation: fadeInCalEvent2 10s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    .cal-event-3 {
+      animation: fadeInCalEvent3 10s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    .scan-line {
+      animation: scanLine 10s linear infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="500" fill="#f9f9f9" />
+  
+  <!-- SYLLABUS VIEW -->
+  <g class="syllabus" transform="translate(200, 50)">
+    <!-- Title -->
+    <text x="200" y="30" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Course Syllabus Scan</text>
+    
+    <!-- Paper background with shadow effect -->
+    <rect x="50" y="60" width="300" height="380" fill="white" stroke="#ddd" stroke-width="1" 
+          filter="drop-shadow(2px 3px 4px rgba(0,0,0,0.2))" />
+    
+    <!-- Paper texture -->
+    <rect x="50" y="60" width="300" height="380" fill="url(#paperTexture)" opacity="0.05" />
+    
+    <!-- Document content -->
+    <text x="200" y="90" font-family="Times New Roman" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">PSYCHOLOGY 101</text>
+    <text x="200" y="115" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Fall Semester 2025 - Course Syllabus</text>
+    <line x1="70" y1="125" x2="330" y2="125" stroke="#333" stroke-width="1" />
+    
+    <!-- Professor information -->
+    <text x="70" y="145" font-family="Times New Roman" font-size="12" fill="#000">Professor: Dr. Elizabeth Chen</text>
+    <text x="70" y="160" font-family="Times New Roman" font-size="12" fill="#000">Office Hours: Tuesdays 2-4pm, Fridays 10am-12pm</text>
+    <text x="70" y="175" font-family="Times New Roman" font-size="12" fill="#000">Email: echen@university.edu</text>
+    
+    <!-- Course description section -->
+    <text x="70" y="205" font-family="Times New Roman" font-size="14" font-weight="bold" fill="#000">COURSE DESCRIPTION</text>
+    <text x="70" y="225" font-family="Times New Roman" font-size="11" fill="#000">An introduction to the fundamental principles of psychology,</text>
+    <text x="70" y="240" font-family="Times New Roman" font-size="11" fill="#000">including research methods, cognitive processes, development,</text>
+    <text x="70" y="255" font-family="Times New Roman" font-size="11" fill="#000">learning theory, and neuropsychology.</text>
+    
+    <!-- Reading assignments section -->
+    <text x="70" y="285" font-family="Times New Roman" font-size="14" font-weight="bold" fill="#000">REQUIRED READINGS</text>
+    <text x="75" y="305" font-family="Times New Roman" font-size="11" fill="#000">Week 3: Chapters 5-7, "Cognitive Processes"</text>
+    <text x="75" y="320" font-family="Times New Roman" font-size="11" fill="#000">Complete by September 15, 2025</text>
+    
+    <!-- Reading highlight overlay -->
+    <rect class="reading-highlight" x="70" y="295" width="260" height="35" fill="rgba(255, 230, 0, 0.3)" stroke="rgba(255, 190, 0, 0.8)" stroke-width="1" rx="2" />
+    
+    <!-- Assignment section -->
+    <text x="70" y="350" font-family="Times New Roman" font-size="14" font-weight="bold" fill="#000">ASSIGNMENTS</text>
+    <text x="75" y="370" font-family="Times New Roman" font-size="11" fill="#000">Research Project Proposal</text>
+    <text x="75" y="385" font-family="Times New Roman" font-size="11" fill="#000">Due: October 1, 2025 by 11:59pm (Canvas submission)</text>
+    
+    <!-- Assignment highlight overlay -->
+    <rect class="assignment-highlight" x="70" y="360" width="260" height="35" fill="rgba(0, 200, 83, 0.3)" stroke="rgba(0, 150, 50, 0.8)" stroke-width="1" rx="2" />
+    
+    <!-- Exam section -->
+    <text x="70" y="415" font-family="Times New Roman" font-size="14" font-weight="bold" fill="#000">EXAMS</text>
+    <text x="75" y="435" font-family="Times New Roman" font-size="11" fill="#000">Midterm Examination</text>
+    <text x="75" y="450" font-family="Times New Roman" font-size="11" fill="#000">Friday, October 15, 2025, 9:00am-11:00am, Room 301</text>
+    
+    <!-- Exam highlight overlay -->
+    <rect class="exam-highlight" x="70" y="425" width="260" height="35" fill="rgba(255, 50, 50, 0.3)" stroke="rgba(200, 0, 0, 0.8)" stroke-width="1" rx="2" />
+    
+    <!-- Scanning line -->
+    <rect class="scan-line" x="50" y="60" width="300" height="4" fill="rgba(0, 120, 255, 0.4)" />
+  </g>
+  
+  <!-- CALENDAR VIEW -->
+  <g class="calendar" transform="translate(200, 50)">
+    <!-- Title -->
+    <text x="200" y="30" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Your Academic Calendar</text>
+    
+    <!-- Calendar container -->
+    <rect x="50" y="60" width="300" height="380" fill="white" stroke="#ddd" stroke-width="1" 
+          filter="drop-shadow(2px 3px 4px rgba(0,0,0,0.2))" />
+    
+    <!-- Calendar header -->
+    <rect x="50" y="60" width="300" height="50" fill="#4285f4" rx="2" />
+    <text x="200" y="92" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="white">OCTOBER 2025</text>
+    
+    <!-- Day labels -->
+    <g fill="#555" font-family="Arial" font-size="12" text-anchor="middle">
+      <text x="71" y="130">SUN</text>
+      <text x="114" y="130">MON</text>
+      <text x="157" y="130">TUE</text>
+      <text x="200" y="130">WED</text>
+      <text x="243" y="130">THU</text>
+      <text x="286" y="130">FRI</text>
+      <text x="329" y="130">SAT</text>
+    </g>
+    
+    <!-- Calendar grid -->
+    <line x1="50" y1="140" x2="350" y2="140" stroke="#eee" stroke-width="1" />
+    <line x1="50" y1="190" x2="350" y2="190" stroke="#eee" stroke-width="1" />
+    <line x1="50" y1="240" x2="350" y2="240" stroke="#eee" stroke-width="1" />
+    <line x1="50" y1="290" x2="350" y2="290" stroke="#eee" stroke-width="1" />
+    <line x1="50" y1="340" x2="350" y2="340" stroke="#eee" stroke-width="1" />
+    <line x1="50" y1="390" x2="350" y2="390" stroke="#eee" stroke-width="1" />
+    
+    <line x1="93" y1="140" x2="93" y2="440" stroke="#eee" stroke-width="1" />
+    <line x1="136" y1="140" x2="136" y2="440" stroke="#eee" stroke-width="1" />
+    <line x1="179" y1="140" x2="179" y2="440" stroke="#eee" stroke-width="1" />
+    <line x1="222" y1="140" x2="222" y2="440" stroke="#eee" stroke-width="1" />
+    <line x1="265" y1="140" x2="265" y2="440" stroke="#eee" stroke-width="1" />
+    <line x1="308" y1="140" x2="308" y2="440" stroke="#eee" stroke-width="1" />
+    
+    <!-- Date numbers -->
+    <g fill="#333" font-family="Arial" font-size="12" text-anchor="middle">
+      <!-- Week 1 -->
+      <text x="71" y="160" fill="#aaa">26</text>
+      <text x="114" y="160" fill="#aaa">27</text>
+      <text x="157" y="160" fill="#aaa">28</text>
+      <text x="200" y="160" fill="#aaa">29</text>
+      <text x="243" y="160" fill="#aaa">30</text>
+      <text x="286" y="160">1</text>
+      <text x="329" y="160">2</text>
+      
+      <!-- Week 2 -->
+      <text x="71" y="210">3</text>
+      <text x="114" y="210">4</text>
+      <text x="157" y="210">5</text>
+      <text x="200" y="210">6</text>
+      <text x="243" y="210">7</text>
+      <text x="286" y="210">8</text>
+      <text x="329" y="210">9</text>
+      
+      <!-- Week 3 -->
+      <text x="71" y="260">10</text>
+      <text x="114" y="260">11</text>
+      <text x="157" y="260">12</text>
+      <text x="200" y="260">13</text>
+      <text x="243" y="260">14</text>
+      <text x="286" y="260">15</text>
+      <text x="329" y="260">16</text>
+      
+      <!-- Week 4 -->
+      <text x="71" y="310">17</text>
+      <text x="114" y="310">18</text>
+      <text x="157" y="310">19</text>
+      <text x="200" y="310">20</text>
+      <text x="243" y="310">21</text>
+      <text x="286" y="310">22</text>
+      <text x="329" y="310">23</text>
+      
+      <!-- Week 5 -->
+      <text x="71" y="360">24</text>
+      <text x="114" y="360">25</text>
+      <text x="157" y="360">26</text>
+      <text x="200" y="360">27</text>
+      <text x="243" y="360">28</text>
+      <text x="286" y="360">29</text>
+      <text x="329" y="360">30</text>
+      
+      <!-- Week 6 -->
+      <text x="71" y="410">31</text>
+      <text x="114" y="410" fill="#aaa">1</text>
+      <text x="157" y="410" fill="#aaa">2</text>
+      <text x="200" y="410" fill="#aaa">3</text>
+      <text x="243" y="410" fill="#aaa">4</text>
+      <text x="286" y="410" fill="#aaa">5</text>
+      <text x="329" y="410" fill="#aaa">6</text>
+    </g>
+    
+    <!-- Calendar events -->
+    
+    <!-- Assignment Due Event - Oct 1 -->
+    <g class="cal-event-1">
+      <rect x="266" y="162" width="40" height="20" rx="3" fill="rgba(0, 200, 83, 0.8)" />
+      <text x="286" y="176" font-family="Arial" font-size="9" fill="white" text-anchor="middle">DUE</text>
+      
+      <!-- Popup detail -->
+      <g transform="translate(210, 162)">
+        <rect x="0" y="0" width="170" height="50" rx="4" fill="white" stroke="#ddd" stroke-width="1" 
+              filter="drop-shadow(0px 2px 3px rgba(0,0,0,0.2))" />
+        <text x="10" y="20" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Project Proposal Due</text>
+        <text x="10" y="35" font-family="Arial" font-size="9" fill="#555">October 1, 2025 - 11:59pm</text>
+        
+        <line x1="95" y1="50" x2="76" y2="20" stroke="#ddd" stroke-width="1" />
+      </g>
+    </g>
+    
+    <!-- Exam Event - Oct 15 -->
+    <g class="cal-event-2">
+      <rect x="266" y="262" width="40" height="20" rx="3" fill="rgba(255, 50, 50, 0.8)" />
+      <text x="286" y="276" font-family="Arial" font-size="9" fill="white" text-anchor="middle">EXAM</text>
+      
+      <!-- Popup detail -->
+      <g transform="translate(210, 262)">
+        <rect x="0" y="0" width="170" height="50" rx="4" fill="white" stroke="#ddd" stroke-width="1" 
+              filter="drop-shadow(0px 2px 3px rgba(0,0,0,0.2))" />
+        <text x="10" y="20" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Midterm Examination</text>
+        <text x="10" y="35" font-family="Arial" font-size="9" fill="#555">Oct 15, 9:00-11:00am, Room 301</text>
+        
+        <line x1="95" y1="50" x2="76" y2="20" stroke="#ddd" stroke-width="1" />
+      </g>
+    </g>
+    
+    <!-- Previous Month Section -->
+    <g class="cal-event-3">
+      <rect x="60" y="420" width="280" height="30" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1" />
+      <text x="85" y="438" font-family="Arial" font-size="10" fill="#555">Sep 15:</text>
+      <rect x="130" y="428" width="40" height="15" rx="3" fill="rgba(255, 230, 0, 0.8)" />
+      <text x="150" y="439" font-family="Arial" font-size="8" fill="#333" text-anchor="middle">READ</text>
+      <text x="200" y="438" font-family="Arial" font-size="10" fill="#333">Chapters 5-7</text>
+    </g>
+  </g>
+  
+  <!-- Pattern definitions -->
+  <defs>
+    <pattern id="paperTexture" patternUnits="userSpaceOnUse" width="100" height="100">
+      <rect width="100" height="100" fill="#000"/>
+      <rect width="50" height="50" fill="#111"/>
+      <rect x="50" y="50" width="50" height="50" fill="#111"/>
+    </pattern>
+  </defs>
+</svg>
     </section>
 <section style="padding: 2rem; margin-top: 3rem; background-color: #f7f9ff; border-radius: 12px;">
   <h2 style="color: #5e5eff;">📅 .ICS Integration + Intuitive Calendar Building</h2>
