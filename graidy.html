@@ -1,74 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Graidy – Your Calendar Companion</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graidy - Your Academic Companion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f4ff;
+      font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 20px;
-      color: #333;
+      background: #f8f7fc;
+      color: #2c2c4a;
     }
-
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
+    header {
+      background: #7f5af0;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h1, h2 {
-      color: #5e5eff;
-    }
-
-    label {
-      display: block;
-      margin-top: 1rem;
-    }
-
-    select, input[type="file"], button {
-      margin-top: 0.5rem;
-      padding: 10px;
-      width: 100%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: #5e5eff;
+      text-align: center;
       color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 1rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
     }
-
-    button:hover {
-      background-color: #4747d1;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
-
+    p {
+      margin: 0.5rem 0;
+    }
     section {
-      margin-top: 2.5rem;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
     }
-
-    .tip {
-      font-style: italic;
-      color: #666;
-      margin-top: 0.5rem;
+    .card {
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.2s;
     }
-
-    .success {
-      color: green;
+    .card:hover {
+      transform: scale(1.02);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Graidy</h1>
-    <p>Your AI-powered assistant for academic flow, focus, and future-you planning. Think Strava meets GPA tracker. In development.</p>
+  <header>
+    <h1>Graidy</h1>
+    <p>Your AI-powered assistant for academic flow, focus, and future-you planning.</p>
+  </header>
+
+  <section>
+    <!-- Drop your feature cards or section content here -->
+  </section>
+
+  <footer>
+    &copy; 2025 Graidy. Built for students who want to thrive.
+  </footer>
+</body>
+</html>
 
     <section id="upload">
       <h2>Upload Your Syllabus</h2>
@@ -109,11 +106,13 @@
       <h2>🗓️ Generate Smart Calendar</h2>
       <div class="tip">Auto-blocks your prep time, based on cognitive flow & task weight.</div>
     </section>
+
+<h2>"Integration In Development"</h2>
 <section style="padding: 2rem; margin-top: 3rem; background-color: #f7f9ff; border-radius: 12px;">
-  <h2 style="color: #5e5eff;">📅 .ICS Integration + Personalized Calendar Building</h2>
+  <h2 style="color: #5e5eff;">📅 .ICS Integration + Intuitive Calendar Building</h2>
   <ul style="margin-left: 1rem;">
-    <li>Auto-generated .ics file after syllabus + habit data upload.</li>
-    <li>Color-coded calendar events: not just deadlines, but smart prep windows based on cognitive profile.</li>
+    <li>Auto-generated .ics file incorporating syllabus & data mapping.</li>
+    <li>Vibe-coded events: More than deadlines, Graidy meets you halfway.</li>
     <li>Strategically placed buffer days and mental health slots.</li>
   </ul>
 
