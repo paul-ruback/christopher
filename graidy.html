@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graidy – Academic Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Graidy</h1>
+    <p>Your AI-powered academic calendar coach.</p>
+
+    <section id="upload">
+      <h2>Upload Your Syllabus</h2>
+      <input type="file" id="syllabusUpload" accept=".pdf,.doc,.docx,.txt" />
+      <button onclick="handleUpload()">Upload</button>
+    </section>
+
+    <section id="quiz">
+      <h2>Quick Onboarding Quiz</h2>
+      <form id="quizForm">
+        <label>How do you usually procrastinate?
+          <select name="procrastinationStyle">
+            <option value="deadline">Last-minute crunch</option>
+            <option value="avoidance">Avoid tasks entirely</option>
+            <option value="perfectionist">Can't start until it feels 'right'</option>
+          </select>
+        </label>
+        <label>What time of day are you most productive?
+          <select name="energyTime">
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="night">Night</option>
+          </select>
+        </label>
+        <button type="submit">Submit Quiz</button>
+      </form>
+    </section>
+
+    <section id="calendar">
+      <h2>Download Your Smart Calendar</h2>
+      <button onclick="downloadICS()">Generate .ICS File</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
