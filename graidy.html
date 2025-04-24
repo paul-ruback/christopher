@@ -57,13 +57,6 @@
     <p>Your AI-powered assistant for academic flow, focus, and future-you planning.</p>
   </header>
 
-  <section>
-    <!-- Drop your feature cards or section content here -->
-  </section>
-
-  <footer>
-    &copy; 2025 Graidy. Built for students who want to thrive.
-  </footer>
 </body>
 </html>
 
@@ -72,42 +65,10 @@
       <div class="tip">We’ll sort due dates, readings, and requirements.</div>
     </section>
 
-    <section id="quiz">
-      <h2>Onboarding Questions</h2>
-      <form id="quizForm">
-        <label>How do you usually procrastinate?
-          <select name="procrastinationStyle">
-            <option value="deadline">Deadline-driven</option>
-            <option value="avoidance">Avoidant</option>
-            <option value="perfectionist">Perfectionist</option>
-          </select>
-        </label>
-
-        <label>When are you most productive?
-          <select name="energyTime">
-            <option value="morning">Morning</option>
-            <option value="afternoon">Afternoon</option>
-            <option value="evening">Evening</option>
-          </select>
-        </label>
-
-        <label>Preferred motivation style?
-          <select name="tone">
-            <option value="gentle">Gentle encouragement</option>
-            <option value="coach">Tough-love coach</option>
-            <option value="sarcastic">Sarcastic friend</option>
-          </select>
-        </label>
-      </form>
-      <div class="tip">We'll customize nudges based on your answers—just once a day, max.</div>
-    </section>
-
     <section id="calendar">
       <h2>🗓️ Generate Smart Calendar</h2>
       <div class="tip">Auto-blocks your prep time, based on cognitive flow & task weight.</div>
     </section>
-
-<h2>"Integration In Development"</h2>
 <section style="padding: 2rem; margin-top: 3rem; background-color: #f7f9ff; border-radius: 12px;">
   <h2 style="color: #5e5eff;">📅 .ICS Integration + Intuitive Calendar Building</h2>
   <ul style="margin-left: 1rem;">
@@ -147,53 +108,6 @@
   </ul>
 </section>
 
-  </div>
-
-  <script>
-    function handleUpload() {
-      const file = document.getElementById('syllabusUpload').files[0];
-      if (file) {
-        alert(`📁 File uploaded: ${file.name}`);
-      } else {
-        alert('❗ Please choose a file first.');
-      }
-    }
-
-    document.getElementById('quizForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = new FormData(this);
-      const style = data.get('procrastinationStyle');
-      const energy = data.get('energyTime');
-      const tone = data.get('tone');
-
-      alert(`🎯 You're a ${style} procrastinator, most productive in the ${energy}, and prefer a ${tone} tone.`);
-    });
-
-    function downloadICS() {
-      const icsData = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:Start prepping for your next assignment!
-DTSTART:${getICSDate(3)}
-DURATION:PT1H
-DESCRIPTION:Graidy scheduled a prep session based on your habits.
-END:VEVENT
-END:VCALENDAR`;
-
-      const blob = new Blob([icsData], { type: 'text/calendar' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'graidy_schedule.ics';
-      a.click();
-    }
-
-    function getICSDate(offsetDays = 0) {
-      const date = new Date();
-      date.setDate(date.getDate() + offsetDays);
-      return date.toISOString().replace(/[-:]/g, '').split('.')[0];
-    }
-  </script>
-</body>
-</html>
-
+ <footer>
+    &copy; 2025 Graidy. Built for students who want to thrive.
+  </footer>
