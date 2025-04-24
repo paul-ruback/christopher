@@ -64,7 +64,340 @@
       <h2>Upload Your Syllabus</h2>
       <div class="tip">We’ll sort due dates, readings, and requirements.</div>
     </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimal Onboarding Questionnaire</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #fafafa;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    #quiz {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    h2 {
+      color: #333;
+      margin-top: 0;
+      font-size: 24px;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .question {
+      margin-bottom: 48px;
+    }
+    
+    .question-title {
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .ghost-button {
+      flex: 1;
+      min-width: 160px;
+      background: transparent;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 14px 20px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+      color: #555;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .ghost-button:hover {
+      border-color: #999;
+      color: #333;
+    }
+    
+    .ghost-button.selected {
+      border-color: #333;
+      color: #333;
+      font-weight: 500;
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+    
+    .ghost-button::after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    
+    .ghost-button.selected::after {
+      background-color: #333;
+      border-color: #333;
+    }
+    
+    .tip {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+    }
+    
+    .submit-btn {
+      display: block;
+      width: 180px;
+      margin: 40px auto 0;
+      padding: 12px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .submit-btn:hover {
+      background-color: #111;
+    }
+    
+    .progress-bar {
+      height: 4px;
+      background-color: #eee;
+      width: 100%;
+      margin-bottom: 40px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background-color: #333;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+      #quiz {
+        padding: 30px 20px;
+      }
+      
+      .options {
+        flex-direction: column;
+      }
+      
+      .ghost-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="quiz">
+    <h2>Personalize Your Experience</h2>
+    <div class="progress-bar">
+      <div class="progress" id="progressBar"></div>
+    </div>
+    <form id="quizForm">
+      <div class="question" id="question1">
+        <div class="question-title">What's your biggest challenge when starting tasks?</div>
+        <div class="options">
+          <button type="button" class="ghost-button" data-value="overwhelmed" onclick="selectOption(this, 'workInitiation')">
+            Feeling overwhelmed by complexity
+          </button>
+          <button type="button" class="ghost-button" data-value="motivation" onclick="selectOption(this, 'workInitiation')">
+            Finding the right motivation
+          </button>
+          <button type="button" class="ghost-button" data-value="uncertainty" onclick="selectOption(this, 'workInitiation')">
+            Uncertainty about where to begin
+          </button>
+          <button type="button" class="ghost-button" data-value="distractions" onclick="selectOption(this, 'workInitiation')">
+            Distractions pull me away
+          </button>
+        </div>
+      </div>
+      
+      <div class="question" id="question2">
+        <div class="question-title">How do you approach challenging tasks?</div>
+        <div class="options">
+          <button type="button" class="ghost-button" data-value="pomodoro" onclick="selectOption(this, 'taskApproach')">
+            Break them into small sessions
+          </button>
+          <button type="button" class="ghost-button" data-value="immersion" onclick="selectOption(this, 'taskApproach')">
+            Deep immersion until completion
+          </button>
+          <button type="button" class="ghost-button" data-value="easyfirst" onclick="selectOption(this, 'taskApproach')">
+            Start with easiest parts first
+          </button>
+          <button type="button" class="ghost-button" data-value="collaborate" onclick="selectOption(this, 'taskApproach')">
+            Collaborate with others when possible
+          </button>
+        </div>
+      </div>
+      
+      <div class="question" id="question3">
+        <div class="question-title">When you get off track, what helps you reset?</div>
+        <div class="options">
+          <button type="button" class="ghost-button" data-value="clear" onclick="selectOption(this, 'resetStrategy')">
+            Clear physical space/digital reset
+          </button>
+          <button type="button" class="ghost-button" data-value="revisit" onclick="selectOption(this, 'resetStrategy')">
+            Revisiting my goals and priorities
+          </button>
+          <button type="button" class="ghost-button" data-value="change" onclick="selectOption(this, 'resetStrategy')">
+            Changing environments completely
+          </button>
+          <button type="button" class="ghost-button" data-value="talk" onclick="selectOption(this, 'resetStrategy')">
+            Talking through blocks with someone
+          </button>
+        </div>
+      </div>
+      
+      <div class="question" id="question4">
+        <div class="question-title">What motivates you to complete difficult tasks?</div>
+        <div class="options">
+          <button type="button" class="ghost-button" data-value="checkoff" onclick="selectOption(this, 'motivation')">
+            The satisfaction of checking things off
+          </button>
+          <button type="button" class="ghost-button" data-value="reward" onclick="selectOption(this, 'motivation')">
+            Treating myself after completion
+          </button>
+          <button type="button" class="ghost-button" data-value="accountability" onclick="selectOption(this, 'motivation')">
+            Public accountability (sharing goals)
+          </button>
+          <button type="button" class="ghost-button" data-value="progress" onclick="selectOption(this, 'motivation')">
+            Seeing tangible progress visually
+          </button>
+        </div>
+      </div>
+      
+      <div class="question" id="question5">
+        <div class="question-title">Preferred motivation style?</div>
+        <div class="options">
+          <button type="button" class="ghost-button" data-value="gentle" onclick="selectOption(this, 'motivationStyle')">
+            Gentle encouragement
+          </button>
+          <button type="button" class="ghost-button" data-value="coach" onclick="selectOption(this, 'motivationStyle')">
+            Tough-love coach
+          </button>
+          <button type="button" class="ghost-button" data-value="sarcastic" onclick="selectOption(this, 'motivationStyle')">
+            Sarcastic friend
+          </button>
+          <button type="button" class="ghost-button" data-value="analytical" onclick="selectOption(this, 'motivationStyle')">
+            Analytical advisor
+          </button>
+        </div>
+      </div>
+      
+      <input type="hidden" name="workInitiation" value="">
+      <input type="hidden" name="taskApproach" value="">
+      <input type="hidden" name="resetStrategy" value="">
+      <input type="hidden" name="motivation" value="">
+      <input type="hidden" name="motivationStyle" value="">
+      
+      <button type="submit" class="submit-btn">Continue</button>
+    </form>
+    <div class="tip">We'll customize nudges based on your answers—just once a day, max.</div>
+  </section>
 
+  <script>
+    // Track total questions and answered questions
+    const totalQuestions = 5;
+    let answeredQuestions = 0;
+    
+    function updateProgress() {
+      const progressPercent = (answeredQuestions / totalQuestions) * 100;
+      document.getElementById('progressBar').style.width = progressPercent + '%';
+    }
+    
+    function selectOption(element, fieldName) {
+      // Get parent question
+      const questionDiv = element.closest('.question');
+      const questionOptions = questionDiv.querySelectorAll('.ghost-button');
+      
+      // Check if this is a new selection or changing an existing one
+      const wasSelected = element.classList.contains('selected');
+      
+      // Remove selected class from siblings
+      questionOptions.forEach(button => button.classList.remove('selected'));
+      
+      // If this wasn't already selected, mark it as selected and update progress
+      if (!wasSelected) {
+        element.classList.add('selected');
+        
+        // Check if this is the first answer for this question
+        const hiddenInput = document.querySelector(`input[name="${fieldName}"]`);
+        if (!hiddenInput.value) {
+          answeredQuestions++;
+          updateProgress();
+        }
+      } else {
+        // If we're deselecting the only option, decrease the count
+        answeredQuestions--;
+        updateProgress();
+      }
+      
+      // Update hidden input value
+      document.querySelector(`input[name="${fieldName}"]`).value = element.classList.contains('selected') ? element.dataset.value : '';
+    }
+    
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Collect form data
+      const formData = {
+        workInitiation: document.querySelector('input[name="workInitiation"]').value,
+        taskApproach: document.querySelector('input[name="taskApproach"]').value,
+        resetStrategy: document.querySelector('input[name="resetStrategy"]').value,
+        motivation: document.querySelector('input[name="motivation"]').value,
+        motivationStyle: document.querySelector('input[name="motivationStyle"]').value
+      };
+      
+      // Check if all questions are answered
+      const unanswered = Object.entries(formData).filter(([key, value]) => !value);
+      
+      if (unanswered.length > 0) {
+        alert('Please answer all questions before continuing.');
+        return;
+      }
+      
+      // Here you would normally submit the data or proceed to next step
+      console.log('Form submitted with data:', formData);
+      alert('Thanks for your responses! Your personalized experience is being prepared.');
+    });
+    
+    // Initialize progress bar
+    updateProgress();
+  </script>
+</body>
+</html>
     <section id="calendar">
       <h2>🗓️ Generate Smart Calendar</h2>
       <div class="tip">Auto-blocks your prep time, based on cognitive flow & task weight.</div>
