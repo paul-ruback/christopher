@@ -2,47 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Graidy – Academic Assistant</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Graidy – Academic Calendar Coach</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4ff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #5e5eff;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    select, input[type="file"], button {
+      margin-top: 0.5rem;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #5e5eff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #4747d1;
+    }
+
+    section {
+      margin-top: 2.5rem;
+    }
+
+    .tip {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    .success {
+      color: green;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to Graidy</h1>
-    <p>Your AI-powered academic calendar coach.</p>
+    <p>Your AI-powered assistant for academic flow, focus, and future-you planning.</p>
 
     <section id="upload">
-      <h2>Upload Your Syllabus</h2>
+      <h2>📚 Upload Your Syllabus</h2>
       <input type="file" id="syllabusUpload" accept=".pdf,.doc,.docx,.txt" />
-      <button onclick="handleUpload()">Upload</button>
+      <button onclick="handleUpload()">Upload File</button>
+      <div class="tip">We’ll parse assignment dates and exam weights automatically.</div>
     </section>
 
     <section id="quiz">
-      <h2>Quick Onboarding Quiz</h2>
+      <h2>🧠 Onboarding Quiz</h2>
       <form id="quizForm">
         <label>How do you usually procrastinate?
           <select name="procrastinationStyle">
-            <option value="deadline">Last-minute crunch</option>
-            <option value="avoidance">Avoid tasks entirely</option>
-            <option value="perfectionist">Can't start until it feels 'right'</option>
+            <option value="deadline">Deadline-driven</option>
+            <option value="avoidance">Avoidant</option>
+            <option value="perfectionist">Perfectionist</option>
           </select>
         </label>
-        <label>What time of day are you most productive?
+
+        <label>When are you most productive?
           <select name="energyTime">
             <option value="morning">Morning</option>
             <option value="afternoon">Afternoon</option>
-            <option value="night">Night</option>
+            <option value="evening">Evening</option>
           </select>
         </label>
-        <button type="submit">Submit Quiz</button>
+
+        <label>Preferred motivation style?
+          <select name="tone">
+            <option value="gentle">Gentle encouragement</option>
+            <option value="coach">Tough-love coach</option>
+            <option value="sarcastic">Sarcastic friend</option>
+          </select>
+        </label>
+
+        <button type="submit">Submit Preferences</button>
       </form>
+      <div class="tip">We'll customize nudges based on your answers—just once a day, max.</div>
     </section>
 
     <section id="calendar">
-      <h2>Download Your Smart Calendar</h2>
-      <button onclick="downloadICS()">Generate .ICS File</button>
+      <h2>🗓️ Generate Smart Calendar</h2>
+      <button onclick="downloadICS()">Download .ICS Calendar</button>
+      <div class="tip">Auto-blocks your prep time, based on cognitive flow & task weight.</div>
+    </section>
+
+    <section id="wellness">
+      <h2>💡 Wellness + Mindfulness Tracking (Coming Soon)</h2>
+      <p>We’ll track academic biometrics like:
+        <ul>
+          <li>🧠 Cognitive load</li>
+          <li>💤 Sleep + energy rhythm</li>
+          <li>😥 Stress & anxiety self-checks</li>
+          <li>🍎 Nutrition + hydration reminders</li>
+        </ul>
+      </p>
+      <div class="tip">Think Strava meets therapy meets GPA tracker. In development.</div>
+    </section>
+
+    <section id="gamification">
+      <h2>🎮 Gamification (Coming Soon)</h2>
+      <p>Earn XP for showing up early, sticking to streaks, and reflecting on your work style.</p>
+      <div class="tip">Unlock badges like “Zen Hustler” or “Focus Monk.”</div>
     </section>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function handleUpload() {
+      const file = document.getElementById('syllabusUpload').files[0];
+      if (file) {
+        alert(`📁 File uploaded: ${file.name}`);
+      } else {
+        alert('❗ Please choose a file first.');
+      }
+    }
+
+    document.getElementById('quizForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      const style = data.get('procrastinationStyle');
+      const energy = data.get('energyTime');
+      const tone = data.get('tone');
+
+      alert(`🎯 You're a ${style} procrastinator, most productive in the ${energy}, and prefer a ${tone} tone.`);
+    });
+
+    function downloadICS() {
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Start prepping for your next assignment!
+DTSTART:${getICSDate(3)}
+DURATION:PT1H
+DESCRIPTION:Graidy scheduled a prep session based on your habits.
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'graidy_schedule.ics';
+      a.click();
+    }
+
+    function getICSDate(offsetDays = 0) {
+      const date = new Date();
+      date.setDate(date.getDate() + offsetDays);
+      return date.toISOString().replace(/[-:]/g, '').split('.')[0];
+    }
+  </script>
 </body>
 </html>
+
