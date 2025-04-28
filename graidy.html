@@ -695,49 +695,203 @@
     updateProgress();
   </script>
 </body>
-</html>
-    <section id="calendar">
-      <h2>🗓️ Generate Smart Calendar</h2>
-      <div class="tip">Auto-blocks your prep time, based on cognitive flow & task weight.</div>
-    </section>
-<section style="padding: 2rem; margin-top: 3rem; background-color: #f7f9ff; border-radius: 12px;">
-  <h2 style="color: #5e5eff;">📅 .ICS Integration + Intuitive Calendar Building</h2>
-  <ul style="margin-left: 1rem;">
-    <li>Auto-generated .ics file incorporating syllabus & data mapping.</li>
-    <li>Vibe-coded events: More than deadlines, Graidy meets you halfway.</li>
-    <li>Strategically placed buffer days and mental health slots.</li>
-  </ul>
+import React, { useState } from 'react';
+import { Calendar, Bell, Award, Brain, Activity, BarChart2, Clock } from 'lucide-react';
 
-  <h2 style="color: #5e5eff; margin-top: 2rem;">Daily Nudging + Behavioral Intervention Engine</h2>
-  <ul style="margin-left: 1rem;">
-    <li>“Drop Everything” Nudges triggered once daily using ambient data (time of day, phone activity, missed tasks).</li>
-    <li>Optional “prep pulse” reminder 1 hour before the nudge setting up spontaneous focus windows.</li>
-    <li>5-Minute Start Rule to reduce initiation anxiety with a micro-commitment.</li>
-  </ul>
+const GraidyCalendar = () => {
+  const [activeTab, setActiveTab] = useState('calendar');
+  
+  const tabs = [
+    { id: 'calendar', label: 'Smart Calendar', icon: <Calendar className="w-5 h-5" /> },
+    { id: 'nudging', label: 'Daily Nudging', icon: <Bell className="w-5 h-5" /> },
+    { id: 'biometrics', label: 'Academic Biometrics', icon: <Activity className="w-5 h-5" /> },
+    { id: 'gamification', label: 'Gamification', icon: <Award className="w-5 h-5" /> },
+    { id: 'mindfulness', label: 'Mindfulness', icon: <Brain className="w-5 h-5" /> }
+  ];
+  
+  const featureContent = {
+    calendar: {
+      title: "📅 Smart Calendar",
+      description: "Auto-blocks your prep time, based on cognitive flow & task weight.",
+      features: [
+        "Auto-generated .ics file incorporating syllabus & data mapping",
+        "Vibe-coded events: More than deadlines, Graidy meets you halfway",
+        "Strategically placed buffer days and mental health slots"
+      ],
+      color: "bg-indigo-500"
+    },
+    nudging: {
+      title: "🔔 Daily Nudging + Behavioral Intervention",
+      description: "Intelligent reminders that work with your natural rhythms.",
+      features: [
+        ""Drop Everything" Nudges triggered once daily using ambient data",
+        "Optional "prep pulse" reminder 1 hour before the nudge",
+        "5-Minute Start Rule to reduce initiation anxiety"
+      ],
+      color: "bg-blue-500"
+    },
+    biometrics: {
+      title: "📊 Academic Biometrics",
+      description: "Track your cognitive performance and optimize your study habits.",
+      features: [
+        "Cognitive Load Meter: Based on task density + self-reported energy",
+        "Stress Tracking: Future wearable integrations",
+        "Sleep & Biometrics: Data layer to optimize cognition",
+        "Streaks and Milestones: Consistency tracking + kind re-engagement"
+      ],
+      color: "bg-cyan-500"
+    },
+    gamification: {
+      title: "🏆 Gamification & Rewards",
+      description: "Make progress fun and rewarding with game-like elements.",
+      features: [
+        "Earn XP for task completion, reflection, streaks, and check-ins",
+        "Levels + Badges: "Deadline Assassin", "Monk Status"",
+        "Daily Mood Rings: Emotional literacy turned into gamified feedback",
+        "Recommended Content: Focus music, motivational quotes, podcasts"
+      ],
+      color: "bg-green-500"
+    },
+    mindfulness: {
+      title: "🧠 Mindfulness & Meta-Cognition",
+      description: "Develop self-awareness and improve your learning process.",
+      features: [
+        "Pre and post-task check-in: "How did it go?"",
+        "Guided breathing techniques to start tasks mindfully",
+        "Cognitive Debriefs after major assignments"
+      ],
+      color: "bg-purple-500"
+    }
+  };
+  
+  const CalendarDemo = () => {
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const currentDay = 2; // Wednesday
+    
+    return (
+      <div className="mt-4 border rounded-lg overflow-hidden bg-white shadow">
+        <div className="bg-indigo-100 p-3 flex justify-between items-center">
+          <button className="text-indigo-600">◀</button>
+          <h3 className="font-medium">April 2025</h3>
+          <button className="text-indigo-600">▶</button>
+        </div>
+        <div className="grid grid-cols-7 text-center border-b">
+          {days.map((day, i) => (
+            <div key={day} className="py-2 text-sm font-medium text-gray-500">{day}</div>
+          ))}
+        </div>
+        <div className="grid grid-cols-7 text-center">
+          {[...Array(30)].map((_, i) => {
+            const dayNumber = i + 1;
+            const isToday = i === currentDay + 1;
+            const hasTask = [5, 12, 18, 24, 29].includes(dayNumber);
+            const hasMentalHealth = [7, 21].includes(dayNumber);
+            const hasBuffer = [10, 17, 25].includes(dayNumber);
+            
+            return (
+              <div 
+                key={i} 
+                className={`py-4 border-r last:border-r-0 border-b relative flex flex-col items-center justify-center
+                  ${isToday ? 'bg-indigo-50' : ''}
+                `}
+              >
+                <span className={`h-6 w-6 flex items-center justify-center rounded-full
+                  ${isToday ? 'bg-indigo-500 text-white' : ''}
+                `}>
+                  {dayNumber}
+                </span>
+                {hasTask && (
+                  <div className="mt-1 w-4 h-4 rounded-full bg-indigo-400" title="Assignment"></div>
+                )}
+                {hasMentalHealth && (
+                  <div className="mt-1 w-4 h-4 rounded-full bg-green-400" title="Mental Health Break"></div>
+                )}
+                {hasBuffer && (
+                  <div className="mt-1 w-4 h-4 rounded-full bg-yellow-400" title="Buffer Day"></div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+  
+  const FeatureDetail = () => {
+    const content = featureContent[activeTab];
+    
+    return (
+      <div className="mt-6 p-6 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 shadow-sm">
+        <div className={`${content.color} w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl mb-4`}>
+          {tabs.find(tab => tab.id === activeTab).icon}
+        </div>
+        <h2 className="text-xl font-bold text-gray-800 mb-2">{content.title}</h2>
+        <p className="text-gray-600 mb-4">{content.description}</p>
+        <ul className="space-y-2">
+          {content.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start">
+              <span className="inline-flex items-center justify-center rounded-full bg-indigo-100 h-6 w-6 text-indigo-800 mr-2 flex-shrink-0">✓</span>
+              <span className="text-gray-700">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
-  <h2 style="color: #5e5eff; margin-top: 2rem;">Mobile Dashboard: Academic Biometrics</h2>
-  <ul style="margin-left: 1rem;">
-    <li>Cognitive Load Meter: Based on task density + self-reported energy.</li>
-    <li>Stress Tracking: Future wearable integrations to measure pulse (Apple Watch, Oura Ring).</li>
-    <li>Sleep & Biometrics: Potential data layer via integrations to optimize cognition.</li>
-    <li>Streaks and Milestones: Encouragement via consistency tracking + kind re-engagement after a break.</li>
-  </ul>
-
-  <h2 style="color: #5e5eff; margin-top: 2rem;">Gamification & Rewards</h2>
-  <ul style="margin-left: 1rem;">
-    <li>Earn XP for task completion, reflection, streaks, and check-ins.</li>
-    <li>Levels + Badges: “Deadline Assassin”, “Monk Status”.</li>
-    <li>Daily Mood Rings: Emotional literacy turned into gamified visual feedback.</li>
-    <li>Reccomended Content: Focus music, motivational quotes, podcasts.</li>
-  </ul>
-
-  <h2 style="color: #5e5eff; margin-top: 2rem;">Mindfulness & Meta-Cognition Layer</h2>
-  <ul style="margin-left: 1rem;">
-    <li>Pre and post-task check-in: “How did it go?”</li>
-    <li>Guided breathing techniques to start tasks mindfully.</li>
-    <li>Cognitive Debriefs after major assignments to boost self-knowledge and future strategy.</li>
-  </ul>
-</section>
+  return (
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-lg">
+      <div className="flex items-center mb-6">
+        <div className="bg-indigo-600 text-white p-3 rounded-lg mr-4">
+          <Calendar className="w-6 h-6" />
+        </div>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800">Graidy Smart Calendar</h1>
+          <p className="text-gray-600">Auto-blocks your prep time based on cognitive flow & task weight</p>
+        </div>
+      </div>
+      
+      <div className="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg">
+        {tabs.map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2 rounded-lg flex items-center text-sm font-medium transition
+              ${activeTab === tab.id 
+                ? 'bg-white text-indigo-600 shadow-sm' 
+                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-200'
+              }`}
+          >
+            <span className="mr-2">{tab.icon}</span>
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      
+      {activeTab === 'calendar' && <CalendarDemo />}
+      <FeatureDetail />
+      
+      <div className="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-100 flex items-center">
+        <div className="bg-indigo-100 p-2 rounded-full mr-3">
+          <Clock className="w-5 h-5 text-indigo-600" />
+        </div>
+        <div>
+          <h3 className="text-sm font-medium text-indigo-800">Coming Soon</h3>
+          <p className="text-xs text-indigo-600">Wearable integrations, AI-powered schedule optimization, and study group coordination</p>
+        </div>
+      </div>
+      
+      <div className="mt-6 flex justify-end">
+        <button className="bg-indigo-600 text-white px-5 py-2 rounded-lg shadow-sm hover:bg-indigo-700 transition mr-3">
+          Sync Calendar
+        </button>
+        <button className="bg-white text-indigo-600 border border-indigo-200 px-5 py-2 rounded-lg shadow-sm hover:bg-indigo-50 transition">
+          Learn More
+        </button>
+      </div>
+    </div>
+  );
+};
 
  <footer>
     &copy; 2025 Graidy. Built for students who want to thrive.
