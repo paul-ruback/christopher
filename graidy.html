@@ -724,8 +724,8 @@ const GraidyCalendar = () => {
       title: "🔔 Daily Nudging + Behavioral Intervention",
       description: "Intelligent reminders that work with your natural rhythms.",
       features: [
-        ""Drop Everything" Nudges triggered once daily using ambient data",
-        "Optional "prep pulse" reminder 1 hour before the nudge",
+        "Drop Everything Nudges triggered once daily using ambient data",
+        "Optional prep pulse reminder 1 hour before the nudge",
         "5-Minute Start Rule to reduce initiation anxiety"
       ],
       color: "bg-blue-500"
@@ -746,7 +746,7 @@ const GraidyCalendar = () => {
       description: "Make progress fun and rewarding with game-like elements.",
       features: [
         "Earn XP for task completion, reflection, streaks, and check-ins",
-        "Levels + Badges: "Deadline Assassin", "Monk Status"",
+        "Levels + Badges: Deadline Assassin, Monk Status",
         "Daily Mood Rings: Emotional literacy turned into gamified feedback",
         "Recommended Content: Focus music, motivational quotes, podcasts"
       ],
@@ -756,7 +756,7 @@ const GraidyCalendar = () => {
       title: "🧠 Mindfulness & Meta-Cognition",
       description: "Develop self-awareness and improve your learning process.",
       features: [
-        "Pre and post-task check-in: "How did it go?"",
+        "Pre and post-task check-in: How did it go?",
         "Guided breathing techniques to start tasks mindfully",
         "Cognitive Debriefs after major assignments"
       ],
@@ -781,7 +781,7 @@ const GraidyCalendar = () => {
           ))}
         </div>
         <div className="grid grid-cols-7 text-center">
-          {[...Array(30)].map((_, i) => {
+          {Array.from({ length: 30 }).map((_, i) => {
             const dayNumber = i + 1;
             const isToday = i === currentDay + 1;
             const hasTask = [5, 12, 18, 24, 29].includes(dayNumber);
@@ -791,13 +791,9 @@ const GraidyCalendar = () => {
             return (
               <div 
                 key={i} 
-                className={`py-4 border-r last:border-r-0 border-b relative flex flex-col items-center justify-center
-                  ${isToday ? 'bg-indigo-50' : ''}
-                `}
+                className={`py-4 border-r last:border-r-0 border-b relative flex flex-col items-center justify-center ${isToday ? 'bg-indigo-50' : ''}`}
               >
-                <span className={`h-6 w-6 flex items-center justify-center rounded-full
-                  ${isToday ? 'bg-indigo-500 text-white' : ''}
-                `}>
+                <span className={`h-6 w-6 flex items-center justify-center rounded-full ${isToday ? 'bg-indigo-500 text-white' : ''}`}>
                   {dayNumber}
                 </span>
                 {hasTask && (
@@ -856,11 +852,7 @@ const GraidyCalendar = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 rounded-lg flex items-center text-sm font-medium transition
-              ${activeTab === tab.id 
-                ? 'bg-white text-indigo-600 shadow-sm' 
-                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-200'
-              }`}
+            className={`px-4 py-2 rounded-lg flex items-center text-sm font-medium transition ${activeTab === tab.id ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-200'}`}
           >
             <span className="mr-2">{tab.icon}</span>
             {tab.label}
@@ -893,6 +885,7 @@ const GraidyCalendar = () => {
   );
 };
 
+export default GraidyCalendar;
  <footer>
     &copy; 2025 Graidy. Built for students who want to thrive.
   </footer>
