@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoHabit - Collective Property Ownership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3B82F6; /* Blue */
+      --primary-dark: #2563EB;
+      --secondary: #10B981; /* Green */
+      --accent: #8B5CF6; /* Purple */
+      --background: #F9FAFB;
+      --card-bg: #FFFFFF;
+      --text: #1F2937;
+      --text-secondary: #4B5563;
+      --border: #E5E7EB;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--card-bg);
+      padding: 1.25rem 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .logo svg {
+      margin-right: 0.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .cta-button {
+      background-color: var(--primary);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    
+    .cta-button:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .secondary-button {
+      background-color: white;
+      color: var(--primary);
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--primary);
+      transition: background-color 0.2s;
+    }
+    
+    .secondary-button:hover {
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 0;
+      background-color: var(--card-bg);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title p {
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background-color: var(--background);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .feature-icon {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: var(--primary);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-icon.green {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--secondary);
+    }
+    
+    .feature-icon.purple {
+      background-color: rgba(139, 92, 246, 0.1);
+      color: var(--accent);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 6rem 0;
+    }
+    
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      counter-reset: step;
+    }
+    
+    .step {
+      position: relative;
+      padding-left: 3rem;
+    }
+    
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    
+    .step h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .step p {
+      color: var(--text-secondary);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 6rem 0;
+      background-color: var(--card-bg);
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .testimonial-card {
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      background-color: var(--background);
+    }
+    
+    .testimonial-text {
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      line-height: 1.7;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-image {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      margin-right: 1rem;
+      overflow: hidden;
+      background-color: #ddd;
+    }
+    
+    .author-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .author-info h4 {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .author-info p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 6rem 0;
+      text-align: center;
+    }
+    
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--primary);
+      color: white;
+      padding: 3rem;
+      border-radius: 12px;
+    }
+    
+    .cta-container h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-container p {
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+    }
+    
+    .cta-container .cta-button {
+      background-color: white;
+      color: var(--primary);
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+    }
+    
+    .cta-container .cta-button:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--text);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-buttons a {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9L12 4L21 9V20H3V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 14C9 15.6569 10.3431 17 12 17C13.6569 17 15 15.6569 15 14C15 12.3431 13.6569 11 12 11C10.3431 11 9 12.3431 9 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          CoHabit
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#matching-algorithm">Matching</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a href="#signup" class="cta-button">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Redefining Home Ownership<br>for a New Economy</h1>
+      <p>CoHabit connects you with like-minded individuals to collectively purchase, manage, and enjoy real estate. Making home ownership simple and accessible for everyone.</p>
+      <div class="hero-buttons">
+        <a href="#signup" class="cta-button">Find Co-Owners</a>
+        <a href="#learn-more" class="secondary-button">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Collective Property Management</h2>
+        <p>Our platform offers the tools you need to make co-ownership simple, transparent, and rewarding.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Smart Matching System</h3>
+          <p>Our proprietary algorithm connects you with like-minded individuals based on investment capacity, lifestyle preferences, and property goals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Financial Management</h3>
+          <p>Complete transparency with equity tracking dashboards, automated expense sharing, rental income distribution, and cash flow visualizations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 8H19C20.0609 8 21.0783 8.42143 21.8284 9.17157C22.5786 9.92172 23 10.9391 23 12C23 13.0609 22.5786 14.0783 21.8284 14.8284C21.0783 15.5786 20.0609 16 19 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 8H18V17C18 18.0609 17.5786 19.0783 16.8284 19.8284C16.0783 20.5786 15.0609 21 14 21H6C4.93913 21 3.92172 20.5786 3.17157 19.8284C2.42143 19.0783 2 18.0609 2 17V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 1V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 1V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 1V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Property Management</h3>
+          <p>Seamless coordination with integrated short-term rental management, maintenance scheduling, task assignment, and occupancy calendars.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Communication Tools</h3>
+          <p>Stay connected with dedicated messaging platforms, document sharing, voting mechanisms for group decisions, and notification systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-title">
+        <h2>How CoHabit Works</h2>
+        <p>A simple process to revolutionize your path to home ownership</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Submit Your Criteria</h3>
+          <p>Answer our comprehensive questionnaire about your investment capacity, property expectations, and ownership goals. No endless swiping or browsing profiles.</p>
+        </div>
+        <div class="step">
+          <h3>Receive Algorithmically Curated Matches</h3>
+          <p>Our AI analyzes your data and presents you with optimally compatible co-ownership groups based on alignment across multiple dimensions.</p>
+        </div>
+        <div class="step">
+          <h3>Review Property Options</h3>
+          <p>Once matched with co-owners, explore suitable properties together with AI-generated financial projections and management simulations.</p>
+        </div>
+        <div class="step">
+          <h3>Manage Collectively</h3>
+          <p>Use our platform to handle short-term rentals, automatically split expenses, and coordinate maintenance until you're ready to move in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Matching Algorithm Section -->
+  <section class="testimonials" id="matching-algorithm">
+    <div class="container">
+      <div class="section-title">
+        <h2>Intelligent Co-Owner Matching</h2>
+        <p>Our proprietary algorithm finds your ideal co-ownership partners without endless swiping</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Financial Compatibility</h3>
+          <p>Our algorithm analyzes investment capacity, risk tolerance, and financial goals to ensure co-owners are aligned on the financial aspects of property ownership.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 16L7 13L10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 10L17 13L14 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Lifestyle Analysis</h3>
+          <p>Beyond basic preferences, we evaluate communication styles, conflict resolution approaches, and long-term living goals to create harmonious co-ownership groups.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Multi-dimensional Matching</h3>
+          <p>Using machine learning, we evaluate over 50 compatibility factors to create optimal co-ownership groups with aligned values and complementary strengths.</p>
+        </div>
+      </div>
+      <div class="section-title" style="margin-top: 4rem;">
+        <h3>How Our Algorithm Works</h3>
+        <p style="max-width: 900px;">Unlike typical matching platforms that rely on superficial swiping, our proprietary algorithm works behind the scenes to identify truly compatible co-ownership groups based on deep compatibility factors.</p>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto; background-color: var(--background); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+          <div style="flex: 1; text-align: center; padding: 1rem;">
+            <div style="width: 64px; height: 64px; background-color: rgba(59, 130, 246, 0.1); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">1</div>
+            <h4>Input Analysis</h4>
+            <p style="font-size: 0.875rem;">We collect and analyze detailed data about your preferences, needs, and goals</p>
+          </div>
+          <div style="width: 24px; text-align: center;">→</div>
+          <div style="flex: 1; text-align: center; padding: 1rem;">
+            <div style="width: 64px; height: 64px; background-color: rgba(16, 185, 129, 0.1); color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">2</div>
+            <h4>Pattern Matching</h4>
+            <p style="font-size: 0.875rem;">Our AI identifies patterns and compatibility signals across numerous dimensions</p>
+          </div>
+          <div style="width: 24px; text-align: center;">→</div>
+          <div style="flex: 1; text-align: center; padding: 1rem;">
+            <div style="width: 64px; height: 64px; background-color: rgba(139, 92, 246, 0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">3</div>
+            <h4>Group Formation</h4>
+            <p style="font-size: 0.875rem;">We assemble optimal co-ownership groups with balanced compatibility scores</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="signup">
+    <div class="container">
+      <div class="cta-container">
+        <h2>Ready to Redefine Home Ownership?</h2>
+        <p>Join thousands of others who are using collective property management to make home owning simple and accessible.</p>
+        <a href="#get-started" class="cta-button">Create Your Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>CoHabit</h3>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#press">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#guides">Co-ownership Guides</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#support">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#cookies">Cookie Policy</a></li>
+            <li><a href="#agreements">Co-ownership Agreements</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <ul class="footer-links">
+            <li><a href="#email">hello@cohabit.com</a></li>
+            <li><a href="#twitter">Twitter</a></li>
+            <li><a href="#instagram">Instagram</a></li>
+            <li><a href="#linkedin">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 CoHabit, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
