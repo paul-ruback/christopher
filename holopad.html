@@ -1,297 +1,302 @@
-import React, { useState, useEffect } from 'react';
-import { BookOpen, Feather, Moon, Battery, Clock, Save, Compass } from 'lucide-react';
-
-export default function HoloPadLanding() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  const parallaxOffset = scrollPosition * 0.3;
-  
-  return (
-    <div className="min-h-screen bg-white text-black font-mono overflow-x-hidden">
-      {/* Hero Section */}
-      <header className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23000000%22 fill-opacity=%221%22 fill-rule=%22evenodd%22%3E%3Ccircle cx=%223%22 cy=%223%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E\")",
-            transform: `translateY(${parallaxOffset}px)`
-          }}
-        />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holo-Pad - Distraction-Free Writing</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: monospace;
+        }
+        .shadow-custom {
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23000000%22 fill-opacity=%221%22 fill-rule=%22evenodd%22%3E%3Ccircle cx=%223%22 cy=%223%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E')"></div>
         
-        <div className="z-10 text-center px-6 max-w-4xl relative">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-            holo-pad
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-            Write freely in your surroundings.
-          </p>
-          <div className="inline-block bg-gray-100 border-2 border-black p-6 mb-12">
-            <p className="text-lg md:text-xl italic">
-              "To type at your eye-line what's already there."
+        <div class="z-10 text-center px-6 max-w-4xl relative">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                holo-pad
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+                Write freely in your surroundings. Words that emerge naturally by themselves.
             </p>
-          </div>
-          <div>
-            <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-none mr-4 transition-all duration-300 border-2 border-black">
-              Pre-Order Now
-            </button>
-            <button className="bg-transparent hover:bg-gray-100 text-black font-semibold py-3 px-8 border-2 border-black rounded-none transition-all duration-300">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </header>
-      
-      {/* Concept Section */}
-      <section className="py-24 bg-white border-y-2 border-black">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">The Future of Distraction-Free Writing</h2>
-          
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="md:w-1/2 space-y-6">
-              <div className="border-l-4 border-black pl-4">
-                <h3 className="text-2xl font-bold mb-2">Holographic Typing</h3>
-                <p className="text-gray-800">Words appear to float in your environment, creating an immersive writing experience that adapts to your surroundings.</p>
-              </div>
-              
-              <div className="border-l-4 border-black pl-4">
-                <h3 className="text-2xl font-bold mb-2">Distraction-Free</h3>
-                <p className="text-gray-800">No notifications. No internet. No distractions. Just you and your words manifesting in the space around you.</p>
-              </div>
-              
-              <div className="border-l-4 border-black pl-4">
-                <h3 className="text-2xl font-bold mb-2">Portable Reality</h3>
-                <p className="text-gray-800">Lightweight and portable – create your writing space anywhere, from coffee shops to mountain tops.</p>
-              </div>
+            <div class="inline-block bg-gray-100 border-2 border-black p-6 mb-12">
+                <p class="text-lg md:text-xl italic">
+                    "To type at your eye-line what's already there."
+                </p>
             </div>
+            <div>
+                <button class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 border-2 border-black mr-4 transition-all duration-300">
+                    Pre-Order Now
+                </button>
+                <button class="bg-transparent hover:bg-gray-100 text-black font-semibold py-3 px-8 border-2 border-black transition-all duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Concept Section -->
+    <section class="py-24 bg-white border-y-2 border-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">The Future of Distraction-Free Writing</h2>
             
-            <div className="md:w-1/2 relative">
-              <div className="w-72 h-96 mx-auto relative">
-                <div className="absolute inset-0 bg-gray-100 border-2 border-black opacity-80 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]"></div>
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  <p className="font-mono text-black text-sm leading-relaxed opacity-70">
-                    The cursor blinked patiently above the<br />
-                    distant tree line. Words materialized<br />
-                    between mundane and beautiful, each letter etched<br />
-                    against a changing backdrop…
-                  </p>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2 space-y-6">
+                    <div class="border-l-4 border-black pl-4">
+                        <h3 class="text-2xl font-bold mb-2">Holographic Typing</h3>
+                        <p class="text-gray-800">Words appear to float in your environment, creating an immersive writing experience that adapts to your surroundings.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-black pl-4">
+                        <h3 class="text-2xl font-bold mb-2">Distraction-Free</h3>
+                        <p class="text-gray-800">No notifications. No internet. No distractions. Just you and your words manifesting in the space around you.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-black pl-4">
+                        <h3 class="text-2xl font-bold mb-2">Portable Reality</h3>
+                        <p class="text-gray-800">Lightweight and portable – create your writing space anywhere, from coffee shops to mountain tops.</p>
+                    </div>
                 </div>
-              </div>
+                
+                <div class="md:w-1/2 relative">
+                    <div class="w-72 h-96 mx-auto relative">
+                        <div class="absolute inset-0 bg-gray-100 border-2 border-black opacity-80 shadow-custom"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-6">
+                            <p class="font-mono text-black text-sm leading-relaxed opacity-70">
+                                The cursor blinked patiently above the<br>
+                                distant tree line. Words materialized<br>
+                                between mundane and beautiful, each letter etched<br>
+                                against a changing backdrop…
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-      
-      {/* Specs Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">FocusWriter Specifications</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white border-2 border-black p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <BookOpen className="text-black mr-3" size={24} />
-                <h3 className="text-xl font-bold">Physical Specs</h3>
-              </div>
-              <ul className="space-y-2 text-gray-800">
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Size:</strong> 7.5" x 5" x 0.6"</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Weight:</strong> ~350g</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Screen:</strong> 6.8" e-ink, glare-free, backlit</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Keyboard:</strong> Compact mechanical scissor-switch</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Body:</strong> Matte magnesium alloy frame</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Ports:</strong> USB-C, SD card slot</span>
-                </li>
-              </ul>
+    </section>
+    
+    <!-- Specs Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">FocusWriter Specifications</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white border-2 border-black p-6 hover:shadow-custom transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <h3 class="text-xl font-bold">Physical Specs</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-800">
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Size:</strong> 7.5" x 5" x 0.6"</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Weight:</strong> ~350g</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Screen:</strong> 6.8" e-ink, glare-free, backlit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Keyboard:</strong> Compact mechanical scissor-switch</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Body:</strong> Matte magnesium alloy frame</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Ports:</strong> USB-C, SD card slot</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white border-2 border-black p-6 hover:shadow-custom transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                        <h3 class="text-xl font-bold">Internal Specs</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-800">
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>OS:</strong> Minimalist Linux-based firmware</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Storage:</strong> 8GB eMMC internal storage</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Battery:</strong> 4000mAh, 3-4 weeks per charge</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Processor:</strong> ARM Cortex A53</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>RAM:</strong> 1GB LPDDR3</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white border-2 border-black p-6 hover:shadow-custom transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                        <h3 class="text-xl font-bold">Key Features</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-800">
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>No WiFi or cloud access</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Formats:</strong> Plaintext, Markdown, RTF</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Tools:</strong> Word count, timer, eye-strain settings</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Split screen</strong> for notes/outlines</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Auto-save</strong> every 10 seconds</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black mr-2">•</span>
+                            <span><strong>Colors:</strong> Graphite Black, Soft Ivory, Moss Green</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
             
-            <div className="bg-white border-2 border-black p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <Compass className="text-black mr-3" size={24} />
-                <h3 className="text-xl font-bold">Internal Specs</h3>
-              </div>
-              <ul className="space-y-2 text-gray-800">
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>OS:</strong> Minimalist Linux-based firmware</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Storage:</strong> 8GB eMMC internal storage</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Battery:</strong> 4000mAh, 3-4 weeks per charge</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Processor:</strong> ARM Cortex A53</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>RAM:</strong> 1GB LPDDR3</span>
-                </li>
-              </ul>
+            <!-- Prototype Image -->
+            <div class="mt-24 max-w-xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Current Prototype</h2>
+                <div class="bg-white border-2 border-black p-6 shadow-custom">
+                    <div class="flex justify-center">
+                          <img 
+                            src="holo-pad-prototype.jpg" 
+                            alt="HoloPad Prototype - E-ink display with physical keyboard" 
+                            class="w-full max-w-md h-auto"
+                          />
+                    </div>
+                    <p class="text-center mt-4 text-gray-800 italic">
+                        Featuring an e-ink display with crisp, clean font that lifts to eye level for distraction-free writing
+                    </p>
+                    <div class="mt-4 text-center text-sm text-gray-700">
+                        <p>Crisp, clean font easy on the eyes.</p>
+                        <p>Immerse yourself in your narrative anywhere.</p>
+                        <p>A cloud-free word processor for your safekeeping.</p>
+                    </div>
+                </div>
             </div>
-            
-            <div className="bg-white border-2 border-black p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <Feather className="text-black mr-3" size={24} />
-                <h3 className="text-xl font-bold">Key Features</h3>
-              </div>
-              <ul className="space-y-2 text-gray-800">
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>No WiFi or cloud access</strong></span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Formats:</strong> Plaintext, Markdown, RTF</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Tools:</strong> Word count, timer, eye-strain settings</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Split screen</strong> for notes/outlines</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Auto-save</strong> every 10 seconds</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-black mr-2">•</span>
-                  <span><strong>Colors:</strong> Graphite Black, Soft Ivory, Moss Green</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          {/* Prototype Image */}
-          <div className="mt-24 max-w-xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Current Prototype</h2>
-            <div className="bg-white border-2 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <div className="flex justify-center">
-                <img 
-                    src="/images/holo-pad-prototype.jpg" 
-                    alt="HoloPad Prototype - E-ink display with physical keyboard" 
-                    className="w-full max-w-md h-auto"
-                  />
-              </div>
-              <p className="text-center mt-4 text-gray-800 italic">
-                Featuring an e-ink display with crisp, clean font that lifts to eye level for distraction-free writing
-              </p>
-              <div className="mt-4 text-center text-sm text-gray-700">
-                <p>Crisp, clean font easy on the eyes.</p>
-                <p>Immerse yourself in your narrative anywhere.</p>
-                <p>A cloud-free word processor for your safekeeping.</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-      
-      {/* Features Section */}
-      <section className="py-24 bg-gray-100 border-y-2 border-black">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Choose HoloPad?</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-white border-2 border-black">
-              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
-                <Moon className="text-black" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Night Mode</h3>
-              <p className="text-gray-800">Adjustable warmth and brightness for comfortable writing in any lighting condition.</p>
-            </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-24 bg-gray-100 border-y-2 border-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">Why Choose HoloPad?</h2>
             
-            <div className="text-center p-6 bg-white border-2 border-black">
-              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
-                <Battery className="text-black" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Long Battery Life</h3>
-              <p className="text-gray-800">Write for weeks on a single charge with our energy-efficient e-ink technology.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-white border-2 border-black">
+                    <div class="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Night Mode</h3>
+                    <p class="text-gray-800">Adjustable warmth and brightness for comfortable writing in any lighting condition.</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white border-2 border-black">
+                    <div class="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Long Battery Life</h3>
+                    <p class="text-gray-800">Write for weeks on a single charge with our energy-efficient e-ink technology.</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white border-2 border-black">
+                    <div class="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Focus Timers</h3>
+                    <p class="text-gray-800">Set session timers to track your writing streaks and stay in the flow state.</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white border-2 border-black">
+                    <div class="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Reliable Backup</h3>
+                    <p class="text-gray-800">Auto-save and easy export via USB-C or SD card ensures your work is always protected.</p>
+                </div>
             </div>
-            
-            <div className="text-center p-6 bg-white border-2 border-black">
-              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
-                <Clock className="text-black" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Focus Timers</h3>
-              <p className="text-gray-800">Set session timers to track your writing streaks and stay in the flow state.</p>
-            </div>
-            
-            <div className="text-center p-6 bg-white border-2 border-black">
-              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
-                <Save className="text-black" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Reliable Backup</h3>
-              <p className="text-gray-800">Auto-save and easy export via USB-C or SD card ensures your work is always protected.</p>
-            </div>
-          </div>
         </div>
-      </section>
-      
-      {/* Newsletter Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-2xl">
-          <div className="bg-white border-2 border-black p-8 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Join the Waiting List</h2>
-            <p className="text-gray-800 mb-6">Be the first to experience the future of distraction-free writing. Get exclusive updates on the HoloPad development.</p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="flex-grow bg-white text-black border-2 border-black rounded-none px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500"
-              />
-              <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all duration-300 border-2 border-black">
-                Subscribe
-              </button>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <div class="bg-white border-2 border-black p-8 text-center shadow-custom">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Join the Waiting List</h2>
+                <p class="text-gray-800 mb-6">Be the first to experience the future of distraction-free writing. Get exclusive updates on the HoloPad development.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        class="flex-grow bg-white text-black border-2 border-black px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    />
+                    <button class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 transition-all duration-300 border-2 border-black">
+                        Subscribe
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="py-12 bg-white border-t-2 border-black">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">holo-pad</h2>
-          <p className="text-gray-600 mb-8">© 2025 HoloPad Technologies. All rights reserved.</p>
-          
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">About</a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">Contact</a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">Privacy</a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">Terms</a>
-          </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t-2 border-black">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">holo-pad</h2>
+            <p class="text-gray-600 mb-8">© 2025 HoloPad Technologies. All rights reserved.</p>
+            
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-black transition-colors duration-300">About</a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors duration-300">Contact</a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors duration-300">Privacy</a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors duration-300">Terms</a>
+            </div>
         </div>
-      </footer>
-    </div>
-  );
-}
+    </footer>
+</body>
+</html>
