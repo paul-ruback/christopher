@@ -1,0 +1,297 @@
+import React, { useState, useEffect } from 'react';
+import { BookOpen, Feather, Moon, Battery, Clock, Save, Compass } from 'lucide-react';
+
+export default function HoloPadLanding() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  const parallaxOffset = scrollPosition * 0.3;
+  
+  return (
+    <div className="min-h-screen bg-white text-black font-mono overflow-x-hidden">
+      {/* Hero Section */}
+      <header className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23000000%22 fill-opacity=%221%22 fill-rule=%22evenodd%22%3E%3Ccircle cx=%223%22 cy=%223%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E\")",
+            transform: `translateY(${parallaxOffset}px)`
+          }}
+        />
+        
+        <div className="z-10 text-center px-6 max-w-4xl relative">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            holo-pad
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+            Write freely in your surroundings. Words that emerge naturally by themselves.
+          </p>
+          <div className="inline-block bg-gray-100 border-2 border-black p-6 mb-12">
+            <p className="text-lg md:text-xl italic">
+              "To type at your eye-line what's already there."
+            </p>
+          </div>
+          <div>
+            <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-none mr-4 transition-all duration-300 border-2 border-black">
+              Pre-Order Now
+            </button>
+            <button className="bg-transparent hover:bg-gray-100 text-black font-semibold py-3 px-8 border-2 border-black rounded-none transition-all duration-300">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </header>
+      
+      {/* Concept Section */}
+      <section className="py-24 bg-white border-y-2 border-black">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">The Future of Distraction-Free Writing</h2>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="md:w-1/2 space-y-6">
+              <div className="border-l-4 border-black pl-4">
+                <h3 className="text-2xl font-bold mb-2">Holographic Typing</h3>
+                <p className="text-gray-800">Words appear to float in your environment, creating an immersive writing experience that adapts to your surroundings.</p>
+              </div>
+              
+              <div className="border-l-4 border-black pl-4">
+                <h3 className="text-2xl font-bold mb-2">Distraction-Free</h3>
+                <p className="text-gray-800">No notifications. No internet. No distractions. Just you and your words manifesting in the space around you.</p>
+              </div>
+              
+              <div className="border-l-4 border-black pl-4">
+                <h3 className="text-2xl font-bold mb-2">Portable Reality</h3>
+                <p className="text-gray-800">Lightweight and portable – create your writing space anywhere, from coffee shops to mountain tops.</p>
+              </div>
+            </div>
+            
+            <div className="md:w-1/2 relative">
+              <div className="w-72 h-96 mx-auto relative">
+                <div className="absolute inset-0 bg-gray-100 border-2 border-black opacity-80 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]"></div>
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <p className="font-mono text-black text-sm leading-relaxed opacity-70">
+                    The cursor blinked patiently above the<br />
+                    distant tree line. Words materialized<br />
+                    between mundane and beautiful, each letter etched<br />
+                    against a changing backdrop…
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Specs Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">FocusWriter Specifications</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white border-2 border-black p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <BookOpen className="text-black mr-3" size={24} />
+                <h3 className="text-xl font-bold">Physical Specs</h3>
+              </div>
+              <ul className="space-y-2 text-gray-800">
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Size:</strong> 7.5" x 5" x 0.6"</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Weight:</strong> ~350g</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Screen:</strong> 6.8" e-ink, glare-free, backlit</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Keyboard:</strong> Compact mechanical scissor-switch</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Body:</strong> Matte magnesium alloy frame</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Ports:</strong> USB-C, SD card slot</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white border-2 border-black p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <Compass className="text-black mr-3" size={24} />
+                <h3 className="text-xl font-bold">Internal Specs</h3>
+              </div>
+              <ul className="space-y-2 text-gray-800">
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>OS:</strong> Minimalist Linux-based firmware</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Storage:</strong> 8GB eMMC internal storage</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Battery:</strong> 4000mAh, 3-4 weeks per charge</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Processor:</strong> ARM Cortex A53</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>RAM:</strong> 1GB LPDDR3</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white border-2 border-black p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <Feather className="text-black mr-3" size={24} />
+                <h3 className="text-xl font-bold">Key Features</h3>
+              </div>
+              <ul className="space-y-2 text-gray-800">
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>No WiFi or cloud access</strong></span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Formats:</strong> Plaintext, Markdown, RTF</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Tools:</strong> Word count, timer, eye-strain settings</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Split screen</strong> for notes/outlines</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Auto-save</strong> every 10 seconds</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-black mr-2">•</span>
+                  <span><strong>Colors:</strong> Graphite Black, Soft Ivory, Moss Green</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Prototype Image */}
+          <div className="mt-24 max-w-xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Current Prototype</h2>
+            <div className="bg-white border-2 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex justify-center">
+                <img 
+                  src="/api/placeholder/400/320" 
+                  alt="HoloPad Prototype - E-ink display with physical keyboard" 
+                  className="w-full max-w-md h-auto"
+                />
+              </div>
+              <p className="text-center mt-4 text-gray-800 italic">
+                Featuring an e-ink display with crisp, clean font that lifts to eye level for distraction-free writing
+              </p>
+              <div className="mt-4 text-center text-sm text-gray-700">
+                <p>Crisp, clean font easy on the eyes.</p>
+                <p>Immerse yourself in your narrative anywhere.</p>
+                <p>A cloud-free word processor for your safekeeping.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Features Section */}
+      <section className="py-24 bg-gray-100 border-y-2 border-black">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Choose HoloPad?</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center p-6 bg-white border-2 border-black">
+              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                <Moon className="text-black" size={28} />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Night Mode</h3>
+              <p className="text-gray-800">Adjustable warmth and brightness for comfortable writing in any lighting condition.</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white border-2 border-black">
+              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                <Battery className="text-black" size={28} />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Long Battery Life</h3>
+              <p className="text-gray-800">Write for weeks on a single charge with our energy-efficient e-ink technology.</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white border-2 border-black">
+              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                <Clock className="text-black" size={28} />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Focus Timers</h3>
+              <p className="text-gray-800">Set session timers to track your writing streaks and stay in the flow state.</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white border-2 border-black">
+              <div className="mx-auto w-16 h-16 mb-4 bg-gray-100 flex items-center justify-center border-2 border-black">
+                <Save className="text-black" size={28} />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Reliable Backup</h3>
+              <p className="text-gray-800">Auto-save and easy export via USB-C or SD card ensures your work is always protected.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Newsletter Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6 max-w-2xl">
+          <div className="bg-white border-2 border-black p-8 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Join the Waiting List</h2>
+            <p className="text-gray-800 mb-6">Be the first to experience the future of distraction-free writing. Get exclusive updates on the HoloPad development.</p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                className="flex-grow bg-white text-black border-2 border-black rounded-none px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              />
+              <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all duration-300 border-2 border-black">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <footer className="py-12 bg-white border-t-2 border-black">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold mb-4">holo-pad</h2>
+          <p className="text-gray-600 mb-8">© 2025 HoloPad Technologies. All rights reserved.</p>
+          
+          <div className="flex justify-center space-x-6">
+            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">About</a>
+            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">Contact</a>
+            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">Privacy</a>
+            <a href="#" className="text-gray-600 hover:text-black transition-colors duration-300">Terms</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
