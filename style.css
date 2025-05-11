@@ -1,13 +1,33 @@
-/* Simplified CSS for cloud button using SVG */
+/* Updated CSS for cloud button with text behind */
 #cloud-home-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
   text-decoration: none;
-  transition: transform 0.3s ease;
 }
 
-#cloud-home-button:hover {
+.button-container {
+  position: relative;
+  transition: transform 0.3s ease;
+  width: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container:hover {
   transform: translateY(-5px);
+}
+
+.home-text {
+  position: absolute;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  bottom: 5px;
+  z-index: -1;
+  text-transform: lowercase;
 }
