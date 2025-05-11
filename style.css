@@ -1,16 +1,13 @@
-/* Simplified CSS for the integrated cloud button */
+/* Same simple CSS for the button */
 #cloud-home-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
   text-decoration: none;
-}
-
-.button-container {
   transition: transform 0.3s ease;
 }
 
-.button-container:hover {
+#cloud-home-button:hover {
   transform: translateY(-5px);
 }
