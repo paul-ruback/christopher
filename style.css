@@ -1,0 +1,13 @@
+/* Simplified CSS for cloud button using SVG */
+#cloud-home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+#cloud-home-button:hover {
+  transform: translateY(-5px);
+}
