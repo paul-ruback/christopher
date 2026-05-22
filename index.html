@@ -36,12 +36,23 @@
       background: white;
       border-radius: 1.5rem;
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
       transition: transform 0.2s;
     }
     .card:hover {
       transform: scale(1.02);
+    }
+    .card h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+    }
+    .card p {
+      margin: 0.4rem 0;
+    }
+    .card p:last-child {
+      margin-top: 1rem;
+      margin-bottom: 0;
     }
     a {
       text-decoration: none;
@@ -54,59 +65,95 @@
       font-size: 0.9rem;
       color: #6b7280;
     }
+
+    /* Per-card theme overrides */
+    .card-cohabit {
+      background-color: #eff6ff;
+      border-left: 6px solid #3b82f6;
+      border-radius: 1rem;
+    }
+    .card-cohabit a { color: #3b82f6; }
+
+    .card-holopad {
+      background-color: #ffffff;
+      border: 2px solid #000000;
+      border-radius: 0;
+      box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.3);
+      font-family: monospace;
+    }
+    .card-holopad h2 {
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+    .card-holopad a {
+      color: #000000;
+      border-bottom: 2px solid #000000;
+      padding-bottom: 2px;
+    }
+
+    .card-hyphen {
+      background-color: #f5f3ff;
+      border-left: 6px solid #a78bfa;
+      border-radius: 1rem;
+    }
+    .card-hyphen h2 { color: #8b5cf6; }
+    .card-hyphen a { color: #8b5cf6; }
+
+    .card-bonsai {
+      background-color: #f0fdf4;
+      border-left: 6px solid #10b981;
+      border-radius: 1rem;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Welcome!</h1>
     <p>Explore ongoing projects and creative experiments</p>
   </header>
-    </section>
+
   <section>
-  <div class="card">
-    <h2>Project Garden</h2>
-    <p>A living archive of personal and collaborative explorations — blending design, systems thinking, and ethical tech.</p>
-  </div>
-</section>
+
     <div class="card">
-    <section style="max-width: 800px; margin: 2rem auto; background-color: #eff6ff; padding: 1.5rem; border-left: 6px solid #3b82f6; border-radius: 1rem;">
-      <h2 style="margin-top: 0;">CoHabit</h2>
+      <h2>Project Garden</h2>
+      <p>A living archive of personal and collaborative explorations.</p>
+    </div>
+
+    <div class="card card-cohabit">
+      <h2>CoHabit</h2>
       <p>Homes That Grow With You.</p>
-      <p><a href="cohabit.html" style="color: #3b82f6; text-decoration: none; font-weight: 600;">View CoHabit project →</a></p>
-    </section>
-  </div>
-  <section>
-  <div class="card">
-    <section style="max-width: 800px; margin: 2rem auto; background-color: #ffffff; padding: 1.5rem; border: 2px solid #000000; border-radius: 0; box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.3); font-family: monospace;">
-      <h2 style="margin-top: 0; font-weight: bold; letter-spacing: -0.5px;">holo-pad</h2>
+      <p><a href="cohabit.html">View CoHabit project →</a></p>
+    </div>
+
+    <div class="card card-holopad">
+      <h2>holo-pad</h2>
       <p>A distraction-free writing device.</p>
-      <p><a href="holopad.html" style="color: #000000; font-weight: bold; text-decoration: none; border-bottom: 2px solid #000000; padding-bottom: 2px;">View HoloPad project →</a></p>
-    </section>
-  </div>
-</section>
-  <section>
-    <div class="card">
-      <section style="max-width: 800px; margin: 2rem auto; background-color: #f5f3ff; padding: 1.5rem; border-left: 6px solid #a78bfa; border-radius: 1rem;">
-        <h2 style="margin-top: 0; color: #8b5cf6;">Hyphen</h2>
-        <p>Where thinkers solve meaningful problems together. Find your co-founder match.</p>
-        <p><a href="hyphen.html" style="color: #8b5cf6; font-weight: 600; text-decoration: none;">View Hyphen project →</a></p>
-      </div>
-  <section>
-    <div class="card">
-      <section style="max-width: 800px; margin: 2rem auto; background-color: #f0fdf4; padding: 1.5rem; border-left: 6px solid #10b981; border-radius: 1rem;">
-  <h2 style="margin-top: 0;">BonsAI</h2>
+      <p><a href="holopad.html">View HoloPad project →</a></p>
+    </div>
+
+    <div class="card card-hyphen">
+      <h2>Hyphen</h2>
+      <p>Where thinkers solve meaningful problems together. Find your co-founder match.</p>
+      <p><a href="hyphen.html">View Hyphen project →</a></p>
+    </div>
+
+    <div class="card card-bonsai">
+      <h2>BonsAI</h2>
       <p>An ethical offline-first AI companion designed to support goal tracking, mindfulness practice, and intentional living.</p>
       <p><a href="bonsai.html">View BonsAI project →</a></p>
     </div>
+
     <div class="card">
       <h2>More Projects Coming Soon</h2>
       <p>Stay tuned as more ideas take shape. This space is growing.</p>
     </div>
+
   </section>
 
   <footer>
     &copy; 2025 Paul Christopher. Made with care.
   </footer>
+
 </body>
 </html>
-
