@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,7 +14,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <title>Your Page Title</title>
+  <title>Project Garden</title>
 </head>
   <title>Welcome | Your Projects</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -83,8 +86,14 @@
       border-radius: 1rem;
     }
     .card-cohabit a { color: #3b82f6; }
-
-    .card-holopad {
+    .cohabit-icon {
+      float: right;
+      margin-left: 1.25rem;
+      margin-bottom: 0.25rem;
+      width: 52px;
+      shape-outside: content-box;
+    }
+        .card-holopad {
       background-color: #ffffff;
       border: 2px solid #000000;
       border-radius: 0;
@@ -105,9 +114,32 @@
       background-color: #f5f3ff;
       border-left: 6px solid #a78bfa;
       border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
     }
-    .card-hyphen h2 { color: #8b5cf6; }
-    .card-hyphen a { color: #8b5cf6; }
+    .card-hyphen h2 { color: #6d28d9; }
+    .card-hyphen a  { color: #8b5cf6; }
+    .hyphen-visual {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hv-node {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #8b5cf6;
+      display: block;
+    }
+    .hv-dash {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #7c3aed;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
 
     .card-bonsai {
       background-color: #f0fdf4;
@@ -119,18 +151,25 @@
 <body>
 
   <header>
-    <h1>!</h1>
-    <p>Ongoing projects and creative experiments</p>
+    <h1>Welcome!</h1>
+    <p>Explore ongoing projects and creative experiments</p>
   </header>
 
   <section>
 
     <div class="card">
       <h2>Project Garden</h2>
-      <p>A living archive of personal and collaborative explorations.</p>
+      <p>A living archive of personal and collaborative explorations — blending design, systems thinking, and ethical tech.</p>
     </div>
 
     <div class="card card-cohabit">
+      <svg class="cohabit-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="2,20 22,3 42,20"            fill="#ef4444"/>
+        <rect    x="4"  y="19" width="36" height="22" fill="#fde68a"/>
+        <rect    x="5"  y="24" width="10" height="9"  rx="1" fill="#7dd3fc"/>
+        <rect    x="16" y="31" width="12" height="10" rx="2" fill="#2563eb"/>
+        <circle  cx="25" cy="36" r="1.2"              fill="#fbbf24"/>
+      </svg>
       <h2>CoHabit</h2>
       <p>Homes That Grow With You.</p>
       <p><a href="cohabit.html">View CoHabit project →</a></p>
@@ -143,20 +182,27 @@
     </div>
 
     <div class="card card-hyphen">
-      <h2>Hyphen</h2>
-      <p>Where thinkers solve meaningful problems together. Find your co-founder match.</p>
-      <p><a href="hyphen.html">View Hyphen project →</a></p>
+      <div>
+        <h2>Hyphen</h2>
+        <p>Solving meaningful problems together.</p>
+        <p><a href="hyphen.html">View Hyphen project →</a></p>
+      </div>
+      <div class="hyphen-visual">
+        <span class="hv-node"></span>
+        <span class="hv-dash">–</span>
+        <span class="hv-node"></span>
+      </div>
     </div>
 
     <div class="card card-bonsai">
       <h2>BonsAI</h2>
-      <p>An ethical offline-first AI companion designed to support goal tracking, mindfulness practice, and intentional living.</p>
+      <p>An offline-first AI to support goal tracking, mindfulness practice, and intentional living.</p>
       <p><a href="bonsai.html">View BonsAI project →</a></p>
     </div>
 
     <div class="card">
       <h2>More Projects Coming Soon</h2>
-      <p>Stay tuned as more ideas take shape. This space is growing.</p>
+      <p>This space is growing.</p>
     </div>
 
   </section>
