@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="245" fill="#5a5a6e"/>
+  <!-- Latitude: equator -->
+  <line x1="11" y1="256" x2="501" y2="256" stroke="white" stroke-width="8" opacity="0.35"/>
+  <!-- Latitude: upper/lower ellipse tight -->
+  <ellipse cx="256" cy="256" rx="245" ry="88" fill="none" stroke="white" stroke-width="8" opacity="0.35"/>
+  <!-- Latitude: upper/lower ellipse wide -->
+  <ellipse cx="256" cy="256" rx="245" ry="162" fill="none" stroke="white" stroke-width="6" opacity="0.22"/>
+  <!-- Meridian: vertical -->
+  <line x1="256" y1="11" x2="256" y2="501" stroke="white" stroke-width="7" opacity="0.28"/>
+  <!-- Meridian: curved -->
+  <ellipse cx="256" cy="256" rx="88" ry="245" fill="none" stroke="white" stroke-width="6" opacity="0.28"/>
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="245" fill="none" stroke="white" stroke-width="14" opacity="0.5"/>
+  <!-- P -->
+  <text x="256" y="352" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="290" font-weight="bold"
+    fill="white" opacity="0.95">P</text>
+</svg>
